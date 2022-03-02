@@ -162,7 +162,7 @@ const ControlBar = ({handleInputIconClick}) => {
             </div>
           </Grid>
           <Grid item style={{marginLeft: 'auto', marginRight: 0, paddingRight: 20, display: 'flex'}}>
-            <a href='https://bit.ly/3DWzbFc-DevB' target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
+            <a href='https://github.com/Dev-Bilaspure/online-ide-Dev_Blocks_IDE' target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
               <div className={classes.feelFreeToConnect}>
                 <GitHubIcon style={{color: '#fff', height: 22, marginTop: 1}}/>
                 <Typography style={{color: '#fff', marginLeft: 7, fontSize: 15, marginTop: 2}}>
