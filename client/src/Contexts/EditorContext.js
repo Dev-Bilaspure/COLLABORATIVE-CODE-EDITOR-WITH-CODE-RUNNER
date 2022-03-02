@@ -16,12 +16,12 @@ const EditorContextProvider = (props) => {
 
 	const handleCodeChange = (newValue) => {
 		setCode(newValue);
-		console.log(newValue)
+		// console.log(newValue)
 	}
 
 	const handleLanguageChange  = (lang) => {
 		setLanguage(lang);
-		console.log(lang);
+		// console.log(lang);
 	}
 
 	const handleThemeChange = (theme) => {
@@ -38,27 +38,27 @@ const EditorContextProvider = (props) => {
  
   const handleInputsChange = (inp) => {
     setInputs(inp);
-    console.log(inp);
+    // console.log(inp);
   }
 
   const handleOutputChange = (otpt) => {
     setOutput(otpt);
-    console.log(otpt);
+    // console.log(otpt);
   }
   return (
     <EditorContext.Provider value={{
-			code,
-			language,
-			theme,
-			tabSize,
-			fontSize,
+      code,
+      language,
+      theme,
+      tabSize,
+      fontSize,
       inputs,
       output,
-			handleCodeChange,
-			handleLanguageChange,
-			handleThemeChange,
-			handleTabSizeChange,
-			handleFontSizeChange,
+      handleCodeChange,
+      handleLanguageChange,
+      handleThemeChange,
+      handleTabSizeChange,
+      handleFontSizeChange,
       handleInputsChange,
       handleOutputChange
 		}}>
