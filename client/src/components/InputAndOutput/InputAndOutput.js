@@ -14,12 +14,12 @@ const InputAndOutput = () => {
             Input
           </Typography>
         </div>
-        <TextareaAutosize 
+        <textarea
           className={classes.inputTextArea}
           onChange={(e) => {handleInputsChange(e.target.value)}}
           value={inputs}
           placeholder="Enter Input"
-          style={{height: '35vh'}}
+          style={{height: '37vh'}}
         />
       </div>
       <div>
@@ -28,11 +28,11 @@ const InputAndOutput = () => {
             Output
           </Typography>
         </div>
-        <TextareaAutosize 
+        <textarea 
           readOnly={true}
           className={classes.outputTextArea}
           value={output}
-          style={{height: '35vh'}}
+          style={{height: '38vh'}}
         />
       </div>
     </div>
