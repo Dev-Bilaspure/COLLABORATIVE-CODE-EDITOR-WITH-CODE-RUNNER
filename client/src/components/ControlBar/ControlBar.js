@@ -57,6 +57,9 @@ const ControlBar = ({handleInputIconClick}) => {
           { code, language, inputs}
         ).then(res => {
           // console.log(res.data);
+          if(parseFloat(res.data.cpuTime)>2.00) {
+            res.data.output='runguard: warning: timelimit exceeded (wall time): aborting command\nrunguard: warning: command terminated with signal 15';
+          }
           if(res.data.memory===null || res.data.output.includes('jdoodle.'))
             setShowCompileErrorSnakBar(true);
           else

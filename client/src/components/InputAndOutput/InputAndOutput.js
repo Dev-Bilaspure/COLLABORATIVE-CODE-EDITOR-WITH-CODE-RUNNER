@@ -19,7 +19,7 @@ const InputAndOutput = () => {
           onChange={(e) => {handleInputsChange(e.target.value)}}
           value={inputs}
           placeholder="Enter Input"
-          style={{height: '37vh'}}
+          style={{height: '38vh'}}
         />
       </div>
       <div>
