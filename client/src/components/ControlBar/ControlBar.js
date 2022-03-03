@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext, useState } from 'react'
-import { Grid, Typography, Button, makeStyles } from '@material-ui/core';
+import { Grid, Typography, Button } from '@material-ui/core';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import KeyboardIcon from '@mui/icons-material/Keyboard';
 import { EditorContext } from '../../Contexts/EditorContext';
@@ -9,13 +9,12 @@ import CodeIcon from '@mui/icons-material/Code';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import axios from 'axios';
-import { Snackbar, Stack } from '@mui/material';
+import { Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
 
 const ControlBar = ({handleInputIconClick}) => {
   const classes = useStyle();
   const fontSizeArray = [4, 6, 8, 10, 12, 14, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64];
-  const tabSizeArray = [2, 4, 8];
   const {code, language, inputs, handleOutputChange, handleFontSizeChange, handleTabSizeChange, handleThemeChange, handleLanguageChange, handleCodeChange} = useContext(EditorContext);
   
   const handleLang = (lng) => {
@@ -95,7 +94,7 @@ const ControlBar = ({handleInputIconClick}) => {
             >
               <PlayArrowIcon style={{color: '#fff', height: 23}}/>
               <Typography style={{fontSize: 13, fontWeight: 'bold'}}>
-                {!isFetching ? ' Run' : 'Running...'}
+                {!isFetching ? ' Run' : 'Running'}
               </Typography>
             </Button>
           </Grid>
@@ -126,11 +125,11 @@ const ControlBar = ({handleInputIconClick}) => {
           <Grid item>
             <div style={{marginLeft: 25, display: 'flex'}}>
               <Typography style={{fontSize: 12, color: '#fff', paddingTop: 2, marginTop: 9, marginRight: 5}}>FONT SIZE </Typography>
-              <select name="plan" id="plan" className={classes.selectTagForFontSize} onChange={(e) => {handleFontSizeChange(e.target.value)}}>
+              <select className={classes.selectTagForFontSize} onChange={(e) => {handleFontSizeChange(e.target.value)}}>
                 <option value="16" selected >16</option>
                 {
                   fontSizeArray.map(ele => (
-                    <option value={ele}>{ele}</option>
+                    <option value={ele} key={ele}>{ele}</option>
                   ))
                 }
               </select>
@@ -162,7 +161,7 @@ const ControlBar = ({handleInputIconClick}) => {
             </div>
           </Grid>
           <Grid item style={{marginLeft: 'auto', marginRight: 0, paddingRight: 20, display: 'flex'}}>
-            <a href='https://github.com/Dev-Bilaspure/online-ide-Dev_Blocks_IDE' target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
+            <a href='https://github.com/Dev-Bilaspure/online-ide-Dev_Blocks_IDE' target="_blank"  rel='noopener noreferrer' style={{color: 'inherit', textDecoration: 'none'}}>
               <div className={classes.feelFreeToConnect}>
                 <GitHubIcon style={{color: '#fff', height: 22, marginTop: 1}}/>
                 <Typography style={{color: '#fff', marginLeft: 7, fontSize: 15, marginTop: 2}}>
@@ -170,7 +169,7 @@ const ControlBar = ({handleInputIconClick}) => {
                 </Typography>
               </div>
             </a>
-            <a href='https://bit.ly/3DWzbFc-DevB' target="_blank" style={{color: 'inherit', textDecoration: 'none'}}>
+            <a href='https://bit.ly/3DWzbFc-DevB' target="_blank" rel='noopener noreferrer' style={{color: 'inherit', textDecoration: 'none'}}>
               <div className={classes.feelFreeToConnect}>
                 <LinkedInIcon style={{color: '#fff', height: 22, marginTop: 1}}/>
                 <Typography style={{color: '#fff', marginLeft: 7, fontSize: 15, marginTop: 2}}>

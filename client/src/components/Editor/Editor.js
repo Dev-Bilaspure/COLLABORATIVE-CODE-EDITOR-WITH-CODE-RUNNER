@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import AceEditor from "react-ace";
+import useStyle from './editorStyles'
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/mode-javascript";
@@ -21,13 +22,15 @@ import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/theme-tomorrow_night";
 import "ace-builds/src-noconflict/theme-terminal";
 import "ace-builds/src-noconflict/ext-language_tools"
-import { EditorContext } from '../Contexts/EditorContext';
+import { EditorContext } from '../../Contexts/EditorContext';
 import * as ace from 'ace-builds/src-noconflict/ace';
 ace.config.set('basePath', '/assets/ui/');
 ace.config.set('modePath', '');
 ace.config.set('themePath', '');
 
+
 const Editor = () => {
+  const classes = useStyle();
   const { code, language, theme, tabSize, handleCodeChange, fontSize } = useContext(EditorContext);
   const langForEditor = () => {
     if(language==='c' || language==='cpp')
@@ -42,7 +45,7 @@ const Editor = () => {
   }
   const editorLang = langForEditor();
   return (
-    <div>
+    <div className={classes.editorClass}>
       <AceEditor
         value={code}
         mode={editorLang}
@@ -58,7 +61,7 @@ const Editor = () => {
           enableSnippets: true
         }}
         width={"100%"}
-        height={"94vh"}
+        style={{height: '100%'}}
       />
     </div>
   )
