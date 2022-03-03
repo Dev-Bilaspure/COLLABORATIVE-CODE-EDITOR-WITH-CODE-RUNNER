@@ -61,7 +61,7 @@ const ControlBar = ({handleInputIconClick}) => {
             setShowCompileErrorSnakBar(true);
           else
             setShowSuccessSnakBar(true);
-          handleOutputChange(res.data.output.replaceAll('jdoodle', 'untitled8906'));
+          handleOutputChange(res.data.output.replaceAll('jdoodle', 'untitled'));
           setIsFetching(false);
         }).catch(err => {
           console.log(err);
