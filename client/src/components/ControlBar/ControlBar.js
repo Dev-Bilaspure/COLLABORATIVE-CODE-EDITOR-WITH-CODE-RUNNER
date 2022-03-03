@@ -57,11 +57,11 @@ const ControlBar = ({handleInputIconClick}) => {
           { code, language, inputs}
         ).then(res => {
           // console.log(res.data);
-          if(res.data.memory===null || res.data.output.includes('jdoodle'))
+          if(res.data.memory===null || res.data.output.includes('jdoodle.'))
             setShowCompileErrorSnakBar(true);
           else
             setShowSuccessSnakBar(true);
-          handleOutputChange(res.data.output.replaceAll('jdoodle', 'untitled'));
+          handleOutputChange(res.data.output.replaceAll('jdoodle.', 'untitled.'));
           setIsFetching(false);
         }).catch(err => {
           console.log(err);
