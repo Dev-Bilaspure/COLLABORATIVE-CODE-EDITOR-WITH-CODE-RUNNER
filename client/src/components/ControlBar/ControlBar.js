@@ -31,6 +31,12 @@ const ControlBar = ({handleInputIconClick}) => {
     setShowSystemErrorSnakBar(false);
   }
 
+  const isCodeEmpty = () => {
+    const tempCode = code;
+    if(tempCode.replaceAll('\n', '').replaceAll(' ', '').length===0)
+      return(true);
+    return(false);
+  }
 
   const [isFetching, setIsFetching] = useState(false);
 
@@ -38,6 +44,13 @@ const ControlBar = ({handleInputIconClick}) => {
     if(!isFetching) {
       // console.log({ code, language, inputs});
       setIsFetching(true);
+
+      if(isCodeEmpty()) {
+        setIsFetching(false);
+        setShowSystemErrorSnakBar(true);
+        return;
+      }
+
       try {
         const response = await axios.post(
           `http://localhost:5000/api/complierun`,
