@@ -57,7 +57,7 @@ const ControlBar = ({handleInputIconClick}) => {
           { code, language, inputs}
         ).then(res => {
           // console.log(res.data);
-          if(res.data.memory===null)
+          if(res.data.memory===null || res.data.output.includes('jdoodle'))
             setShowCompileErrorSnakBar(true);
           else
             setShowSuccessSnakBar(true);
