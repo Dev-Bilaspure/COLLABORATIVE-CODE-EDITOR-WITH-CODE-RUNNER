@@ -1,5 +1,5 @@
 export const codeForC = 
-`#include<stdio.h>
+`#include <stdio.h>
 
 int main() {
     printf("Hello world!!");
@@ -7,7 +7,7 @@ int main() {
 
 
 export const codeForCpp = 
-`#include<bits/stdc++.h>
+`#include <iostream>
 using namespace std;
 
 int main() {
