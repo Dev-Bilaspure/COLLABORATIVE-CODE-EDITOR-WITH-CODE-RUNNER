@@ -30,7 +30,7 @@ ace.config.set('themePath', '');
 
 
 const Editor = () => {
-  const classes = useStyle();
+  // const classes = useStyle();
   const { code, language, theme, tabSize, handleCodeChange, fontSize } = useContext(EditorContext);
   const langForEditor = () => {
     if(language==='c' || language==='cpp')
@@ -45,7 +45,7 @@ const Editor = () => {
   }
   const editorLang = langForEditor();
   return (
-    <div className={classes.editorClass}>
+    <div style={{height: '100%'}}>
       <AceEditor
         value={code}
         mode={editorLang}
@@ -61,7 +61,7 @@ const Editor = () => {
           enableSnippets: true
         }}
         width={"100%"}
-        style={{height: '100%'}}
+        style={{height: '93vh'}}
       />
     </div>
   )

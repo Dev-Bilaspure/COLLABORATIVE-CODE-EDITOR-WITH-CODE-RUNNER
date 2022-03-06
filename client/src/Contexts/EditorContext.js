@@ -10,7 +10,7 @@ const EditorContextProvider = (props) => {
   const [language, setLanguage] = useState('cpp');
   const [theme, setTheme] = useState('clouds_midnight');
   const [tabSize, setTabSize] = useState(4);
-  const [fontSize, setFontSize] = useState(16);
+  const [fontSize, setFontSize] = useState(15);
   const [inputs, setInputs] = useState('');
   const [output, setOutput] = useState('');
 

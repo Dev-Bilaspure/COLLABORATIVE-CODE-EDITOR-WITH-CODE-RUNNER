@@ -12,8 +12,8 @@ const Home = () => {
   return (
     <div className="homewrapper">
       <ControlBar handleInputIconClick={handleInputIconClick}/>
-      <div style={{marginTop: 40}}>
-        <Grid container style={{background: 'rgb(33,33,32)'}}>
+      <div style={{marginTop: 42, background: 'rgb(33,33,32)'}}>
+        <Grid container >
           <Grid item lg={!showInputOutput ? 12 : 8} md={!showInputOutput ? 12 : 8} sm={12} xs={12} xl={!showInputOutput ? 12 : 9}>
             <Editor/>
           </Grid>

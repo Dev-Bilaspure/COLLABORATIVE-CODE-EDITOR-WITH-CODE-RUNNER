@@ -20,6 +20,9 @@ const InputAndOutput = () => {
           value={inputs}
           placeholder="Enter Input"
           style={{height: '38vh'}}
+          data-gramm="false"
+          data-gramm_editor="false"
+          data-enable-grammarly="false"
         />
       </div>
       <div>

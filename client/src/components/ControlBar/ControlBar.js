@@ -14,7 +14,7 @@ import MuiAlert from '@mui/material/Alert';
 
 const ControlBar = ({handleInputIconClick}) => {
   const classes = useStyle();
-  const fontSizeArray = [4, 6, 8, 10, 12, 14, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64];
+  const fontSizeArray = [4, 6, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64];
   const {code, language, inputs, handleOutputChange, handleFontSizeChange, handleTabSizeChange, handleThemeChange, handleLanguageChange, handleCodeChange} = useContext(EditorContext);
   
   const handleLang = (lng) => {
@@ -99,7 +99,7 @@ const ControlBar = ({handleInputIconClick}) => {
           Compilation or Runtime Error.
         </Alert>
       </Snackbar>
-      <div style={{background: 'rgb(33,33,32)', height: 40}}>
+      <div style={{background: 'rgb(33,33,32)', height: 42}}>
         <Grid container>
           <Grid item>
             <Button
@@ -108,8 +108,8 @@ const ControlBar = ({handleInputIconClick}) => {
               onClick={handleRunClick}
               style={{background: isFetching ? 'rgb(151, 19, 39)' : 'rgb(226,28,59)'}}
             >
-              <PlayArrowIcon style={{color: '#fff', height: 23}}/>
-              <Typography style={{fontSize: 13, fontWeight: 'bold'}}>
+              <PlayArrowIcon style={{color: '#fff', height: 23, color: isFetching ? 'rgb(210, 210, 210)': '#fff'}}/>
+              <Typography style={{fontSize: 13, fontWeight: 'bold', color: isFetching ? 'rgb(210, 210, 210)': '#fff'}}>
                 {!isFetching ? ' Run' : 'Running'}
               </Typography>
             </Button>
@@ -142,7 +142,7 @@ const ControlBar = ({handleInputIconClick}) => {
             <div style={{marginLeft: 25, display: 'flex'}}>
               <Typography style={{fontSize: 12, color: '#fff', paddingTop: 2, marginTop: 9, marginRight: 5}}>FONT SIZE </Typography>
               <select className={classes.selectTagForFontSize} onChange={(e) => {handleFontSizeChange(e.target.value)}}>
-                <option value="16" selected >16</option>
+                <option value="15" selected >15</option>
                 {
                   fontSizeArray.map(ele => (
                     <option value={ele} key={ele}>{ele}</option>
@@ -196,13 +196,12 @@ const ControlBar = ({handleInputIconClick}) => {
             <div className={classes.devBlocksIDE}>
               <CodeIcon style={{color: '#fff'}}/> 
               <Typography style={{color: '#fff', marginLeft: 7, fontWeight: 'bold'}}>
-                Dev Blocks IDE
+                Dev Blocks
               </Typography>
             </div>
           </Grid>
         </Grid>
       </div>
-      
     </div>
   )
 }

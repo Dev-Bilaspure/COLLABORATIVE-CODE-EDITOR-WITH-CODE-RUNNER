@@ -65,7 +65,7 @@ const useStyle = makeStyles({
     paddingLeft: 10, 
     paddingRight: 15, 
     height: 27, 
-    marginTop: 5, 
+    marginTop: 6, 
     paddingTop: 3, 
     borderRadius: 0,
     '&:hover': {
@@ -79,7 +79,7 @@ const useStyle = makeStyles({
     paddingLeft: 10, 
     paddingRight: 15, 
     height: 27, 
-    marginTop: 5, 
+    marginTop: 6, 
     paddingTop: 3, 
     borderRadius: 5, 
     marginLeft: 20
