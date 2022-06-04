@@ -63,7 +63,7 @@ const useStyle = makeStyles({
     background: 'rgb(226,28,59)', 
     display: 'flex', 
     paddingLeft: 10, 
-    paddingRight: 15, 
+    paddingRight: 10, 
     height: 27, 
     marginTop: 6, 
     paddingTop: 3, 

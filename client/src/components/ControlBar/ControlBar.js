@@ -11,11 +11,24 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import axios from 'axios';
 import { Snackbar } from '@mui/material';
 import MuiAlert from '@mui/material/Alert';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import FileDownloadDialogBox from '../FileDownloadDialogBox/FileDownloadDialogBox';
 
 const ControlBar = ({handleInputIconClick}) => {
   const classes = useStyle();
   const fontSizeArray = [4, 6, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64];
-  const {code, language, inputs, handleOutputChange, handleFontSizeChange, handleTabSizeChange, handleThemeChange, handleLanguageChange, handleCodeChange} = useContext(EditorContext);
+  const {
+    code, 
+    language, 
+    inputs, 
+    handleOutputChange, 
+    handleFontSizeChange, 
+    handleTabSizeChange, 
+    handleThemeChange, 
+    handleLanguageChange, 
+    handleCodeChange, 
+    handleToggleDialogBox
+  } = useContext(EditorContext);
   
   const handleLang = (lng) => {
     handleCodeChange(getDefaultCode(lng));
@@ -56,11 +69,23 @@ const ControlBar = ({handleInputIconClick}) => {
           `http://localhost:5000/api/complierun`,
           { code, language, inputs}
         ).then(res => {
+          // // console.log(res.data);
+          // if(parseFloat(res.data.cpuTime)>2.00) {
+          //   res.data.output='runguard: warning: timelimit exceeded (wall time): aborting command\nrunguard: warning: command terminated with signal 15';
+          // }
+          // if(res.data.memory===null || res.data.output.includes('jdoodle.'))
+          //   setShowCompileErrorSnakBar(true);
+          // else
+          //   setShowSuccessSnakBar(true);
+          // handleOutputChange(res.data.output.replaceAll('jdoodle.', 'untitled.'));
+          // setIsFetching(false);
+
           // console.log(res.data);
-          if(parseFloat(res.data.cpuTime)>2.00) {
+          if(res.data.output.includes('JDoodle - Timeout')) {
+            setShowCompileErrorSnakBar(true);
             res.data.output='runguard: warning: timelimit exceeded (wall time): aborting command\nrunguard: warning: command terminated with signal 15';
           }
-          if(res.data.memory===null || res.data.output.includes('jdoodle.'))
+          if(res.data.output.includes('jdoodle.'))
             setShowCompileErrorSnakBar(true);
           else
             setShowSuccessSnakBar(true);
@@ -83,6 +108,9 @@ const ControlBar = ({handleInputIconClick}) => {
   }
   return (
     <div style={{ position: 'fixed', top: 0, zIndex: 100, width: '100%'}}>
+
+      <FileDownloadDialogBox />
+
       <Snackbar open={showSuccessSnakBar} autoHideDuration={5000} onClose={handleOnCloseSnakBar}>
         <Alert onClose={handleOnCloseSnakBar} severity="success" sx={{ width: '100%' }} >
           Code Complied Successfully.
@@ -176,21 +204,37 @@ const ControlBar = ({handleInputIconClick}) => {
               </select>
             </div>
           </Grid>
+
+
+          <Grid item style={{marginLeft: 10}}>
+            <div style={{marginLeft: 25, display: 'flex', paddingTop: 8, }}>
+              <Button 
+                varient="outlined" 
+                style={{background: "rgb(38,39,38)", height: 25, textTransform: 'none'}}
+                onClick={handleToggleDialogBox}
+              >
+                <Typography style={{fontSize: 14, color: '#fff'}}>Download</Typography>
+                <FileDownloadIcon style={{height: 18, color: '#fff'}}/>
+              </Button> 
+            </div>
+          </Grid>
+
+
           <Grid item style={{marginLeft: 'auto', marginRight: 0, paddingRight: 20, display: 'flex'}}>
             <a href='https://github.com/Dev-Bilaspure/online-ide-Dev_Blocks_IDE' target="_blank"  rel='noopener noreferrer' style={{color: 'inherit', textDecoration: 'none'}}>
               <div className={classes.feelFreeToConnect}>
                 <GitHubIcon style={{color: '#fff', height: 22, marginTop: 1}}/>
-                <Typography style={{color: '#fff', marginLeft: 7, fontSize: 15, marginTop: 2}}>
-                  Github
-                </Typography>
+                {/* <Typography style={{color: '#fff', marginLeft: 7, fontSize: 15, marginTop: 2}}>
+                  
+                </Typography> */}
               </div>
             </a>
             <a href='https://bit.ly/3DWzbFc-DevB' target="_blank" rel='noopener noreferrer' style={{color: 'inherit', textDecoration: 'none'}}>
               <div className={classes.feelFreeToConnect}>
                 <LinkedInIcon style={{color: '#fff', height: 22, marginTop: 1}}/>
-                <Typography style={{color: '#fff', marginLeft: 7, fontSize: 15, marginTop: 2}}>
-                  Linkedin
-                </Typography>
+                {/* <Typography style={{color: '#fff', marginLeft: 7, fontSize: 15, marginTop: 2}}>
+                  
+                </Typography> */}
               </div>
             </a>
             <div className={classes.devBlocksIDE}>

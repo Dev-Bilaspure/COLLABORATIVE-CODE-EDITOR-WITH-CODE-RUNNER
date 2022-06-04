@@ -13,7 +13,19 @@ const EditorContextProvider = (props) => {
   const [fontSize, setFontSize] = useState(15);
   const [inputs, setInputs] = useState('');
   const [output, setOutput] = useState('');
+  const [fileName, setFileName] = useState('code');
+  const [isDialogBoxVisible, setIsDialogBoxVisible] = useState(false);
 
+  
+  const handleToggleDialogBox = () => {
+    if(fileName==='')
+      handleFileNameChange('code');
+    setIsDialogBoxVisible(!isDialogBoxVisible);
+  }
+
+  const handleFileNameChange = (newFileName) => {
+    setFileName(newFileName);
+  }
 	const handleCodeChange = (newValue) => {
 		setCode(newValue);
 		// console.log(newValue)
@@ -54,13 +66,17 @@ const EditorContextProvider = (props) => {
       fontSize,
       inputs,
       output,
+      fileName,
+      isDialogBoxVisible,
       handleCodeChange,
       handleLanguageChange,
       handleThemeChange,
       handleTabSizeChange,
       handleFontSizeChange,
       handleInputsChange,
-      handleOutputChange
+      handleOutputChange,
+      handleFileNameChange,
+      handleToggleDialogBox
 		}}>
       {props.children}
     </EditorContext.Provider>
