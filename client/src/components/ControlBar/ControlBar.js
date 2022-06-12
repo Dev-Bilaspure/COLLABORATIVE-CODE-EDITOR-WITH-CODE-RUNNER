@@ -21,6 +21,9 @@ const ControlBar = ({handleInputIconClick}) => {
     code, 
     language, 
     inputs, 
+    theme,
+    tabSize,
+    fontSize,
     handleOutputChange, 
     handleFontSizeChange, 
     handleTabSizeChange, 
@@ -144,7 +147,7 @@ const ControlBar = ({handleInputIconClick}) => {
           </Grid>
           <Grid item>
             <div style={{marginLeft: 10}}>
-              <select name="plan" id="plan" className={classes.selectTag} onChange={(e) => {handleLang(e.target.value)}}>
+              <select name="plan" id="plan" className={classes.selectTag} value={language} onChange={(e) => {handleLang(e.target.value)}}>
                 <option value="cpp" selected>C++</option>
                 <option value="c" >C</option>
                 <option value="python3">Python 3</option>
@@ -169,7 +172,7 @@ const ControlBar = ({handleInputIconClick}) => {
           <Grid item>
             <div style={{marginLeft: 25, display: 'flex'}}>
               <Typography style={{fontSize: 12, color: '#fff', paddingTop: 2, marginTop: 9, marginRight: 5}}>FONT SIZE </Typography>
-              <select className={classes.selectTagForFontSize} onChange={(e) => {handleFontSizeChange(e.target.value)}}>
+              <select className={classes.selectTagForFontSize} value={fontSize} onChange={(e) => {handleFontSizeChange(e.target.value)}}>
                 <option value="15" selected >15</option>
                 {
                   fontSizeArray.map(ele => (
@@ -182,7 +185,7 @@ const ControlBar = ({handleInputIconClick}) => {
           <Grid item>
             <div style={{marginLeft: 25, display: 'flex'}}>
               <Typography style={{fontSize: 12, color: '#fff', paddingTop: 2, marginTop: 9, marginRight: 5}}>TAB SIZE</Typography>
-              <select name="plan" id="plan" className={classes.selectTagForFontSize} onChange={(e) => {handleTabSizeChange(e.target.value)}}>
+              <select name="plan" id="plan" value={tabSize} className={classes.selectTagForFontSize} onChange={(e) => {handleTabSizeChange(e.target.value)}}>
                 <option value={2}>2</option>
                 <option value={4} selected>4</option>
                 <option value={8}>8</option>
@@ -192,7 +195,7 @@ const ControlBar = ({handleInputIconClick}) => {
           <Grid item>
             <div style={{marginLeft: 25, display: 'flex'}}>
               <Typography style={{fontSize: 12, color: '#fff', paddingTop: 2, marginTop: 9, marginRight: 5}}>THEME</Typography>
-              <select name="plan" id="plan" className={classes.selectTagForTheme} onChange={(e) => {handleThemeChange(e.target.value)}}>
+              <select name="plan" id="plan" className={classes.selectTagForTheme} value={theme} onChange={(e) => {handleThemeChange(e.target.value)}}>
                 <option value={'monokai'}>Monokai</option>
                 <option value={'clouds_midnight'} selected>Midnight</option>
                 <option value={'one_dark'}>One dark</option>

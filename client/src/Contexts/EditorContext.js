@@ -1,22 +1,34 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { getDefaultCode } from '../utils/defaulltCode';
 
 
 export const EditorContext = createContext();
 
 const EditorContextProvider = (props) => {
+
   const defaultCppCode = getDefaultCode('cpp');
-  const [code, setCode] = useState(defaultCppCode);
-  const [language, setLanguage] = useState('cpp');
-  const [theme, setTheme] = useState('clouds_midnight');
-  const [tabSize, setTabSize] = useState(4);
-  const [fontSize, setFontSize] = useState(15);
-  const [inputs, setInputs] = useState('');
-  const [output, setOutput] = useState('');
-  const [fileName, setFileName] = useState('code');
+  const [code, setCode] = useState(sessionStorage.getItem('ls_code') ? sessionStorage.getItem('ls_code') : defaultCppCode);
+  const [language, setLanguage] = useState(sessionStorage.getItem('ls_language') ? sessionStorage.getItem('ls_language') : 'cpp');
+  const [theme, setTheme] = useState(sessionStorage.getItem('ls_theme') ? sessionStorage.getItem('ls_theme') : 'clouds_midnight');
+  const [tabSize, setTabSize] = useState(sessionStorage.getItem('ls_tabSize') ? parseInt(sessionStorage.getItem('ls_tabSize')) : 4);
+  const [fontSize, setFontSize] = useState(sessionStorage.getItem('ls_fontSize') ? parseInt(sessionStorage.getItem('ls_fontSize')) : 15);
+  const [inputs, setInputs] = useState(sessionStorage.getItem('ls_inputs') ? sessionStorage.getItem('ls_inputs') : '');
+  const [output, setOutput] = useState(sessionStorage.getItem('ls_output') ? sessionStorage.getItem('ls_output') : '');
+  const [fileName, setFileName] = useState(sessionStorage.getItem('ls_fileName') ? sessionStorage.getItem('ls_fileName') : 'code');
   const [isDialogBoxVisible, setIsDialogBoxVisible] = useState(false);
 
-  
+  useEffect(() => {
+    sessionStorage.setItem('ls_code', code);
+    sessionStorage.setItem('ls_language', language);
+    sessionStorage.setItem('ls_theme', theme);
+    sessionStorage.setItem('ls_tabSize', tabSize);
+    sessionStorage.setItem('ls_fontSize', fontSize);
+    sessionStorage.setItem('ls_inputs', inputs);
+    sessionStorage.setItem('ls_output', output);
+    sessionStorage.setItem('ls_fileName', fileName);
+    
+  }, [code, language, theme, tabSize, fontSize, inputs, output, fileName])
+
   const handleToggleDialogBox = () => {
     if(fileName==='')
       handleFileNameChange('code');
