@@ -70,7 +70,7 @@ const ControlBar = ({handleInputIconClick}) => {
       try {
         const response = await axios.post(
           `http://localhost:5000/api/complierun`,
-          { code, language, inputs}
+          { code, language: language==='cpp' ? 'cpp17' : language, inputs}
         ).then(res => {
           // // console.log(res.data);
           // if(parseFloat(res.data.cpuTime)>2.00) {
