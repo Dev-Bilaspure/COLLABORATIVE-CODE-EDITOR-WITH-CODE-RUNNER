@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+## Setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To get the project up and running, use the following commands:
 
-## Available Scripts
+```bash
+yarn # Install dependencies
+yarn dev # Start application
+```
 
-In the project directory, you can run:
+## Miscellaneous
 
-### `npm start`
+- React Router v6 documentation: https://reactrouter.com/en/main/start/tutorial.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Never write TypeScript in this project! Only name your files `.ts` and `.tsx` for now. We'll add types later.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Running Playwright tests on dev.
 
-### `npm test`
+- Close the vite server and firebase emulators (if running).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Then use the following command:
 
-### `npm run build`
+```bash
+yarn playwright:ci
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Fix these rules before FULL production deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Fix the firebase rules to disallow localhost access to firebase services.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Testing
 
-### `npm run eject`
+#### FAQ
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Q: Setup?
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A: Use the following commands:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+cd playwright && yarn # Install dependencies for testing framework
+cd .. && yarn start:dev # Start application & testing framework concurrently
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Q: Firebase emulator won't run on anything before Java 11?
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A: Have to download Java from here: https://www.oracle.com/java/technologies/javase/jdk19-archive-downloads.html. If doesn't get fixed, contact a developer.
